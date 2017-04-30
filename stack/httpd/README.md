@@ -7,11 +7,10 @@ docker swarm init
 
 Create mount point on host
 ```
-mkdir -p /opt/volumes/httpd/conf.d
-mkdir -p /opt/volumes/httpd/html
+mkdir -p /opt/volumes/httpd/{conf.d,html}
 
-chown 48:48 /opt/volumes/httpd -R
-chmod 755 /opt/volumes/httpd -R
+chown 48:48 /opt/volumes/httpd/ -R
+chmod 755 /opt/volumes/httpd/ -R
 ```
 
 Deploy statck
