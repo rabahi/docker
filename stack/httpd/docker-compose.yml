@@ -8,6 +8,6 @@ services:
       - 443:443
     volumes:
       # htdocs
-      - /opt/volumes/httpd/html:/var/www/html
+      - /opt/volumes/httpd/htdocs:/var/www/html
       # conf.d
       - /opt/volumes/httpd/conf.d:/etc/httpd/conf.d
