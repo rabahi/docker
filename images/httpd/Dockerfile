@@ -6,9 +6,10 @@ LABEL maintainer "rabahi"
 
 # listen port at runtime
 EXPOSE 80
+EXPOSE 443
 
 # Install packages
-RUN yum -y install httpd \
+RUN yum -y install httpd mod_ssl \
     && yum clean all
 
 # mount point
