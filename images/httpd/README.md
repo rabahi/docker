@@ -7,7 +7,10 @@ docker run --publish 80:80 rabahi/httpd
 You can see httpd here : http://localhost:80
 
 # Mount volume
-mkdir -p /opt/volumes/conf.d
-mkdir -p /opt/volumes/html
+mkdir -p /opt/volumes/httpd/conf.d
+mkdir -p /opt/volumes/httpd/html
 
-docker run --publish 80:80 --volume /opt/volumes/conf.d:/etc/httpd/conf.d --volume /opt/volumes/htdocs:/var/www/html rabahi/httpd 
+chown 48:48 /opt/volumes/httpd -R
+chmod 755 /opt/volumes/httpd -R
+
+docker run --name httpd --publish 80:80 --volume /opt/volumes/httpd/conf.d:/etc/httpd/conf.d --volume /opt/volumes/httpd/htdocs:/var/www/html rabahi/httpd 
