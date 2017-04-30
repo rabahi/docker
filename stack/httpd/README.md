@@ -22,4 +22,14 @@ You can see the apache site here :
  - http://localhost:80
  - https://localhost:443
  
- 
+ # Manage stack
+
+List stack tasks
+```
+docker stack ps stack-httpd
+```
+
+Stop stack tasks
+```
+docker stack rm stack-httpd
+```
