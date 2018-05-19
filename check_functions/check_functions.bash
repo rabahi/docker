@@ -33,9 +33,38 @@ function check
   echo
 }
 
+function installPackage
+{
+  local package=$1
+  
+  echo -n "checking package '$package'"
+  eval "type $package > /dev/null 2>&1"
+  RETVAL=$?
+  if [ $RETVAL -eq 0 ]
+  then echo_success
+  else 
+     echo_warning
+     echo
+     echo -n "install package '$package'"
+     eval "yum -y install $package > /dev/null 2>&1"
+     eval "type $package > /dev/null 2>&1"
+     RETVAL=$?
+     if [ $RETVAL -eq 0 ]
+     then echo_success
+     else echo_failure
+     fi
+  fi
+  echo
+
+}
+
 ##################################################
 #      CHECK FUNCTIONS
 ##################################################
+
+# install required packages if not found in the system. 
+installPackage nc
+echo
 
 # Check if tcp port is open
 # usage: check_tcp myPort
